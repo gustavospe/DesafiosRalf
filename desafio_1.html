@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média do Aluno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+</head>
+
+<body class="bg-neutral-100 text-neutral-900 min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white shadow-md rounded-2xl p-8 w-full max-w-lg space-y-6 border border-neutral-200">
+        <div class="space-y-1 text-center">
+            <h1 class="text-3xl font-semibold">Calculadora de Média</h1>
+            <p class="text-sm text-neutral-500">Digite as três notas para saber sua situação.</p>
+        </div>
+
+        <div class="grid gap-4">
+            <input id="nota1" type="number" placeholder="Nota 1"
+                class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <input id="nota2" type="number" placeholder="Nota 2"
+                class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <input id="nota3" type="number" placeholder="Nota 3"
+                class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <button onclick="calcularMedia()"
+                class="w-full bg-neutral-900 text-white py-2 rounded-lg hover:bg-neutral-800 transition-colors">
+                Calcular
+            </button>
+        </div>
+
+        <div id="resultado" class="text-center text-base font-medium text-neutral-800"></div>
+    </div>
+
+    <script>
+        function calcularMedia() {
+            // Coleta as notas dos inputs html
+            const n1 = parseFloat(document.getElementById('nota1').value)
+            const n2 = parseFloat(document.getElementById('nota2').value)
+            const n3 = parseFloat(document.getElementById('nota3').value)
+            
+            // Verifica se tem letras ou caracteres inválidos           
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+                document.getElementById('resultado').innerHTML =
+                    '<span class="text-red-600">Preencha todas as notas corretamente.</span>'
+                return
+            }
+            //calcula a media(basicamente soma as notas e divide por 3), e logo apos formata o resultado para uma casa decimal(.toFixed(1)
+            const media = ((n1 + n2 + n3) / 3).toFixed(1)
+            let situacao = ''
+            let cor = ''
+
+            if (media >= 7) {
+                situacao = 'Aprovado'
+                cor = 'text-green-600'
+            } else if (media >= 5) {
+                situacao = 'Recuperação'
+                cor = 'text-yellow-600'
+            } else {
+                situacao = 'Reprovado'
+                cor = 'text-red-600'
+            }
+
+            document.getElementById('resultado').innerHTML = `
+          <p class="mb-1 ${cor}"><strong>Média: ${media}</strong></p>
+          <p class="${cor} font-semibold text-lg"><strong>${situacao}</strong></p>
+        `
+        }
+    </script>
+</body>
+</html>
