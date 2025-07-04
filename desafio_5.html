@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fatorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-neutral-100 min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white p-8 rounded-2xl shadow-md max-w-md w-full border border-neutral-200 space-y-6">
+      <div class="text-center space-y-1">
+        <h1 class="text-2xl font-bold text-neutral-900">Fatorial</h1>
+        <p class="text-sm text-neutral-500">Informe um número para calcular seu fatorial.</p>
+      </div>
+
+      <div class="space-y-4">
+        <input
+          id="numero"
+          type="number"
+          placeholder="Digite um número"
+          class="w-full px-4 py-2 border rounded-lg border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <button
+          onclick="calcularFatorial()"
+          class="w-full bg-neutral-900 text-white py-2 rounded-lg hover:bg-neutral-800 transition-colors"
+        >
+          Calcular Fatorial
+        </button>
+      </div>
+
+      <div id="resultado" class="text-center text-base text-neutral-800"></div>
+    </div>
+
+    <script>
+      function calcularFatorial() {
+        const numero = parseInt(document.getElementById('numero').value)
+        const resultado = document.getElementById('resultado')
+
+        if (isNaN(numero) || numero < 0) {
+          resultado.innerHTML = '<span class="text-red-600">Digite um número válido (0 ou maior).</span>'
+          return
+        }
+
+        let fatorial = 1
+        for (let i = 2; i <= numero; i++) {
+          fatorial *= i
+        }
+
+        resultado.innerHTML = `<p>O fatorial de <strong>${numero}</strong> é <strong>${fatorial}</strong>.</p>`
+      }
+    </script>
+  </body>
+</html>
