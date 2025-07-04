@@ -71,6 +71,42 @@
           correta: 1
         }
       ]
+        // Embaralha as perguntas e seleciona 5 aleatórias
+      const selecionadas = perguntas.sort(() => 0.5 - Math.random()).slice(0, 5)
+      const quizContainer = document.getElementById('quiz-container')
+
+
+        // Cria os blocos de perguntas 
+      selecionadas.forEach((q, i) => {
+        const bloco = document.createElement('div')
+        bloco.className = 'p-4 border rounded-lg'
+        bloco.innerHTML = `
+          <p class="font-medium mb-2">${i + 1}. ${q.pergunta}</p>
+          ${q.alternativas.map((alt, idx) => `
+            <label class="block">
+              <input type="radio" name="q${i}" value="${idx}" class="mr-2" /> ${alt}
+            </label>
+          `).join('')}
+        `
+        quizContainer.appendChild(bloco)
+      })
+
+     // Logica do Botão
+      const btn = document.createElement('button')
+      btn.innerText = 'Finalizar'
+      btn.className = 'w-full bg-neutral-900 text-white py-2 rounded-lg hover:bg-neutral-800 transition-colors'
+      btn.onclick = () => {
+        let acertos = 0
+        selecionadas.forEach((q, i) => {
+          const selecionada = document.querySelector(`input[name='q${i}']:checked`)
+          // validação para verificar se a resposta está correta
+          if (selecionada && parseInt(selecionada.value) === q.correta) {
+            acertos++
+          }
+        })
+        document.getElementById('resultado').innerText = `Você acertou ${acertos} de 5 perguntas.`
+      }
+      quizContainer.appendChild(btn)
     </script>
   </body>
 </html>
