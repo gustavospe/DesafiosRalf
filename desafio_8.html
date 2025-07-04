@@ -9,12 +9,68 @@
   <body class="bg-neutral-100 min-h-screen flex items-center justify-center px-4">
     <div class="bg-white p-8 rounded-2xl shadow-md max-w-xl w-full border border-neutral-200 space-y-6">
       <div class="text-center space-y-1">
-        <h1 class="text-2xl font-bold text-neutral-900">Quiz</h1>
+        <h1 class="text-2xl font-bold text-neutral-900">Quiz de Perguntas</h1>
+        <p class="text-sm text-neutral-500">Responda 5 perguntas aleatórias.</p>
       </div>
 
       <div id="quiz-container" class="space-y-4"></div>
 
       <div id="resultado" class="text-center text-lg font-semibold text-neutral-800"></div>
     </div>
+
+    <script>
+      const perguntas = [
+        {
+          pergunta: 'O que significa HTML?',
+          alternativas: ['Hyper Text Markup Language', 'High Text Markup Language', 'Hyperlink and Text Mark Language', 'Home Tool Markup Language'],
+          correta: 0
+        },
+        {
+          pergunta: 'Qual linguagem usamos para estilizar páginas?',
+          alternativas: ['HTML', 'CSS', 'JavaScript', 'Python'],
+          correta: 1
+        },
+        {
+          pergunta: 'Qual linguagem usamos para programar interatividade no navegador?',
+          alternativas: ['PHP', 'CSS', 'HTML', 'JavaScript'],
+          correta: 3
+        },
+        {
+          pergunta: 'O que é o programa Entra21?',
+          alternativas: ['Curso de culinária', 'Programa de formação em tecnologia', 'Aplicativo de mensagens', 'Jogos educacionais'],
+          correta: 1
+        },
+        {
+          pergunta: 'Qual cidade é sede do BluSoft?',
+          alternativas: ['Joinville', 'Itajaí', 'Blumenau', 'Curitiba'],
+          correta: 2
+        },
+        {
+          pergunta: 'Para que serve o CSS?',
+          alternativas: ['Criar conteúdo', 'Fazer lógica', 'Estilizar páginas', 'Navegar entre páginas'],
+          correta: 2
+        },
+        {
+          pergunta: 'Qual tag usamos para criar parágrafos em HTML?',
+          alternativas: ['div', 'h1', 'pd', 'br'],
+          correta: 2
+        },
+        {
+          pergunta: 'JavaScript é:',
+          alternativas: ['Uma linguagem de estilo', 'Uma linguagem de marcação', 'Uma linguagem de programação', 'Um editor de texto'],
+          correta: 2
+        },
+        {
+          pergunta: 'Qual instituição não é uma faculdade?',
+          alternativas: ['Furb', 'Senai', 'Escola Sesi', 'Senac'],
+          correta: 2
+        },
+        {
+          pergunta: 'Qual dessas não é uma linguagem de programação?',
+          alternativas: ['Python', 'HTML', 'Java', 'C++'],
+          correta: 1
+        }
+      ]
+    </script>
   </body>
 </html>
