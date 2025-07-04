@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ano Bissexto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-neutral-100 min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white p-8 rounded-2xl shadow-md max-w-md w-full border border-neutral-200 space-y-6">
+      <div class="text-center space-y-1">
+        <h1 class="text-2xl font-bold text-neutral-900">Verificador de Ano Bissexto</h1>
+      </div>
+
+      <div class="space-y-4">
+        <input
+          id="ano"
+          type="number"
+          placeholder="Digite o ano"
+          class="w-full px-4 py-2 border rounded-lg border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <button
+          onclick="verificarBissexto()"
+          class="w-full bg-neutral-900 text-white py-2 rounded-lg hover:bg-neutral-800 transition-colors"
+        >
+          Verificar
+        </button>
+      </div>
+
+      <div id="resultado" class="text-center text-base text-neutral-800"></div>
+    </div>
+
+    <script>
+      function verificarBissexto() {
+        const ano = parseInt(document.getElementById('ano').value)
+        const resultado = document.getElementById('resultado')
+
+        if (isNaN(ano) || ano <= 0) {
+          resultado.innerHTML = '<span class="text-red-600">Digite um ano válido.</span>'
+          return
+        }
+        
+        // Verifica se o ano é bissexto
+        // Um ano é bissexto se for divisível por 4, mas não por 100, exceto se for divisível por 400. 
+        // O primeiro pensamento é como vou fazer essa conta, mas é relativamente simples amén 
+        
+        const bissexto = (ano % 4 === 0 && ano % 100 !== 0) || (ano % 400 === 0)
+
+        resultado.innerHTML = bissexto
+          ? `<p class="text-green-600 font-semibold">${ano} é um ano bissexto.</p>`
+          : `<p class="text-red-600 font-semibold">${ano} não é um ano bissexto.</p>`
+      }
+    </script>
+  </body>
+</html>
