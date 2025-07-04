@@ -32,5 +32,25 @@
       <div id="resultado" class="text-center text-base text-neutral-800"></div>
     </div>
 
+    <script>
+      function gerarTabuada() {
+        const numero = parseInt(document.getElementById('numero').value)
+        const resultado = document.getElementById('resultado')
+
+        // Verifica se o número é válido e se é um número (tem q ser inteiro)
+        if (isNaN(numero)) {
+          resultado.innerHTML = '<span class="text-red-600">Digite um número válido.</span>'
+          return
+        }
+
+        let tabuada = `<h2 class="text-lg font-semibold mb-2">Tabuada do ${numero}</h2>`
+        for (let i = 1; i <= 10; i++) {
+            //template literals é pra  facilitar a formatação 
+          tabuada += `<p>${numero} × ${i} = ${numero * i}</p>`
+        }
+
+        resultado.innerHTML = tabuada
+      }
+    </script>
   </body>
 </html>
